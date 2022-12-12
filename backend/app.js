@@ -1,6 +1,6 @@
 const cors = require('cors')
 const express = require('express')
-
+const pingRouter = require('./controllers/ping')
 
 const mongoose = require('mongoose')
 const { MONGODB } = require('./utils/config')
@@ -17,5 +17,7 @@ const app = express()
 
 app.use(express.json())
 app.use(cors())
+
+app.use('/ping', pingRouter)
 
 module.exports = app

@@ -1,7 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from './logo.svg'
+import './App.css'
+import React from 'react'
+import axios from 'axios'
 
 function App() {
+
+  axios.post('http://localhost:3001/ping')
+    .then((e) => {
+      console.log(e)
+    })
   return (
     <div className="App">
       <header className="App-header">
@@ -19,7 +26,7 @@ function App() {
         </a>
       </header>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
