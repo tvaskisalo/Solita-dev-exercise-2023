@@ -3,11 +3,13 @@ module.exports = {
     'browser': true,
     'commonjs': true,
     'es2021': true,
-    'node': true
+    'node': true,
+    'jest/globals': true
   },
   'extends': 'eslint:recommended',
   'overrides': [
   ],
+  'plugins': ['jest'],
   'parserOptions': {
     'ecmaVersion': 'latest'
   },
