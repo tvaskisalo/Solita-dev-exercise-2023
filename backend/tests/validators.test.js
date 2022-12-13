@@ -107,51 +107,76 @@ describe('Validator tests', () => {
       const valid = validators.validateDistance('9')
       expect(valid).toBe(false)
     })
-
-    test('validateDistance returns false with negative integer', () => {
-      const valid = validators.validateDistance('-9')
-      expect(valid).toBe(false)
-    })
   })
 
   describe('Duration validator', () => {
-    test('validateDuration returns true with correct input', () => {
-      const valid = validators.validateDuration('2021-05-31T23:57:25', '2021-06-01T00:05:46', 500)
+    test('validateDurationWithTimes returns true with correct input', () => {
+      const valid = validators.validateDurationWithTimes('2021-05-31T23:57:25', '2021-06-01T00:05:46', 500)
       expect(valid).toBe(true)
     })
 
-    test('validateDuration returns false with undefined input', () => {
-      const valid = validators.validateDuration(undefined, undefined, undefined)
+    test('validateDurationWithTimes returns false with undefined input', () => {
+      const valid = validators.validateDurationWithTimes(undefined, undefined, undefined)
+      expect(valid).toBe(false)
+    })
+
+    test('validateDurationWithTimes returns false with non-number string', () => {
+      const valid = validators.validateDurationWithTimes('2021-05-31T23:57:25', '2021-06-01T00:05:46', 'duraiton')
+      expect(valid).toBe(false)
+    })
+
+    test('validateDurationWithTimes returns false with negative integer', () => {
+      const valid = validators.validateDurationWithTimes('2021-05-31T23:57:25', '2021-06-01T00:05:46', '-10' )
+      expect(valid).toBe(false)
+    })
+
+    test('validateDurationWithTimes returns false with duration less than 10 seconds', () => {
+      const valid = validators.validateDurationWithTimes('2021-05-31T00:00:00', '2021-06-01T00:00:09', '9')
+      expect(valid).toBe(false)
+    })
+
+    test('validateDurationWithTimes returns false when time difference is too small compared to duration', () => {
+      const valid = validators.validateDurationWithTimes('2021-05-31T00:00:00', '2021-06-01T00:00:09', '11')
+      expect(valid).toBe(false)
+    })
+
+    test('validateDurationWithTimes returns false when time difference is too large compared to duration', () => {
+      const valid = validators.validateDurationWithTimes('2021-05-31T00:00:00', '2021-06-01T00:00:20', '10')
+      expect(valid).toBe(false)
+    })
+
+    test('validateDurationWithTimes returns false when departure_time is later than return_time', () => {
+      const valid = validators.validateDurationWithTimes('2021-06-01T00:05:46', '2021-05-31T23:57:25', '500')
+      expect(valid).toBe(false)
+    })
+
+    test('validateDuration returns true with valid duration', () => {
+      const valid = validators.validateDuration('11')
+      expect(valid).toBe(true)
+    })
+
+    test('validateDuration returns false with undefined duration', () => {
+      const valid = validators.validateDuration(undefined)
+      expect(valid).toBe(false)
+    })
+
+    test('validateDuration return false with negative duration', () => {
+      const valid = validators.validateDuration('-10')
       expect(valid).toBe(false)
     })
 
     test('validateDuration returns false with non-number string', () => {
-      const valid = validators.validateDuration('2021-05-31T23:57:25', '2021-06-01T00:05:46', 'duraiton')
+      const valid = validators.validateDuration('distance')
       expect(valid).toBe(false)
     })
 
-    test('validateDuration returns false with negative integer', () => {
-      const valid = validators.validateDuration('2021-05-31T23:57:25', '2021-06-01T00:05:46', '-10' )
+    test('validateDuration returns false with float-number', () => {
+      const valid = validators.validateDuration('12.12')
       expect(valid).toBe(false)
     })
 
-    test('validateDuration returns false with duration less than 10 seconds', () => {
-      const valid = validators.validateDuration('2021-05-31T00:00:00', '2021-06-01T00:00:09', '9')
-      expect(valid).toBe(false)
-    })
-
-    test('validateDuration returns false when time difference is too small compared to duration', () => {
-      const valid = validators.validateDuration('2021-05-31T00:00:00', '2021-06-01T00:00:09', '11')
-      expect(valid).toBe(false)
-    })
-
-    test('validateDuration returns false when time difference is too large compared to duration', () => {
-      const valid = validators.validateDuration('2021-05-31T00:00:00', '2021-06-01T00:00:20', '10')
-      expect(valid).toBe(false)
-    })
-
-    test('validateDuration returns false when departure_time is later than return_time', () => {
-      const valid = validators.validateDuration('2021-06-01T00:05:46', '2021-05-31T23:57:25', '500')
+    test('validateDuration returns false with distance less than ten', () => {
+      const valid = validators.validateDuration('9')
       expect(valid).toBe(false)
     })
   })

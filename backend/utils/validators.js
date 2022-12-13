@@ -47,26 +47,36 @@ const validateDistance = (distance) => {
 //Duration must be at least 10 seconds
 //Duration must match the difference between departure_time and return_time within 10% difference
 //Return_time must be later than departure_time
-const validateDuration = (departure_time, return_time, duration) => {
-  //Parse duration to number
-  const duration_num = Number(duration)
+const validateDurationWithTimes = (departure_time, return_time, duration) => {
   const departure_date = new Date(departure_time)
   const return_date = new Date(return_time)
   //Ensure that dates exist
   if (!departure_date || !return_date) {
     return false
   }
+  //Validate duration
+  if (!validateDuration(duration)) {
+    return false
+  }
+  //Parse duration to number
+  const duration_num = Number(duration)
   //Calculate the trip length in seconds
   const difference_seconds = Math.round((return_date-departure_date)/1000)
   //Calculate the ratio. This should be really close to 1 with good data.
   const ratio = difference_seconds/duration_num
-  if (!duration || duration < 10) {
+  if (ratio<0.95 || ratio > 1.05) {
+    return false
+  }
+  return true
+}
+
+const validateDuration = (duration) => {
+  //Parse duration to number
+  const duration_num = Number(duration)
+  if (!duration_num || duration_num < 10) {
     return false
   }
   if (!(Number.isInteger(duration_num))) {
-    return false
-  }
-  if (ratio<0.95 || ratio > 1.05) {
     return false
   }
   return true
@@ -98,7 +108,7 @@ const validateLine = (line) => {
     validateId(return_station_id) &&
     validateStationName(return_station_name) &&
     validateDistance(distance) &&
-    validateDuration(departure_time, return_time, duration)
+    validateDurationWithTimes(departure_time, return_time, duration)
   ) {
     return true
   }
@@ -111,5 +121,6 @@ module.exports = {
   validateStationName,
   validateLine,
   validateDistance,
-  validateDuration
+  validateDuration,
+  validateDurationWithTimes
 }
