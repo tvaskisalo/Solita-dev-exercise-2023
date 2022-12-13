@@ -104,6 +104,21 @@ describe('Station getters', () => {
     () => expect(async () => await stationService.getStationById(undefined)).toThrow()
   })
 
+  test('getStationByName returns correct station with valid name', async() => {
+    const station = await stationService.getStationByName('Käpylän asema')
+    expect(station.station_id).toBe(1)
+    expect(station.name).toBe('Käpylän asema')
+  })
+
+  test('getStationByName throws error with empty string', async () => {
+    () => expect(async () => await stationService.getStationByName('')).toThrow()
+  })
+
+  test('getStationByName throws error with undefined name', async () => {
+    () => expect(async () => await stationService.getStationByName(undefined)).toThrow()
+  })
+
+
   test('getStations returns all stations', async () => {
     const stations = await stationService.getStations()
     expect(stations.length).toBe(2)

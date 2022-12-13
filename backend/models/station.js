@@ -9,7 +9,7 @@ const stationSchema = new mongoose.Schema({
   },
   station_id: {
     type: Number,
-    require: true,
+    required: true,
     unique: true
   }
 })
