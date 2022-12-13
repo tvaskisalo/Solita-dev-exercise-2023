@@ -90,7 +90,6 @@ const validateLine = (line) => {
   const return_station_name = data[5]
   const distance = data[6]
   const duration = data[7]
-  console.log(validateDuration(departure_time, return_time, duration))
   if (
     validateTime(departure_time) &&
     validateTime(return_time) &&
