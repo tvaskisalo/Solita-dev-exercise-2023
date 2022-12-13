@@ -3,6 +3,7 @@ const { validateStationName, validateId } = require('../utils/validators')
 //It is slightly redundant to check the arguments here and in the router, but it does not hurt anything.
 
 const addStation = async(name, id) => {
+  //Validate the props
   if (!validateStationName(name) || !validateId(id)) {
     throw new Error('Invalid station name or id')
   }
