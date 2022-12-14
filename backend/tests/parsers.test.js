@@ -25,7 +25,7 @@ describe('Datapoint parser tests', () => {
 
 describe('csvParser tests', () => {
   test('csvParser returns correct array with file containing only valid data', async() => {
-    const data = await parsers.csvParser('./tests/valid_data.csv')
+    const data = await parsers.csvParser('./tests/valid_data/valid_data.csv')
     expect(data).toBeDefined()
     expect(data.length).toBe(15)
     const sample = data[0]
@@ -50,7 +50,7 @@ describe('csvParser tests', () => {
   })
 
   test('csvParser returns empty array with file containing only incorrect data', async() => {
-    const data = await parsers.csvParser('./tests/invalid_data.csv')
+    const data = await parsers.csvParser('./tests/invalid_data/invalid_data.csv')
     expect(data.length).toBe(0)
   })
 })
