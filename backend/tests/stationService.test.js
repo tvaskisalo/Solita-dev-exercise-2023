@@ -4,11 +4,7 @@ const mongoose = require('mongoose')
 const { MONGODB_URI } = require('../utils/config')
 
 beforeAll(async() => {
-  try {
-    mongoose.connect(MONGODB_URI)
-  } catch (e) {
-    console.log('Failed to connect to mongodb')
-  }
+  await mongoose.connect(MONGODB_URI)
 }, 2000)
 
 describe('Station addition', () => {

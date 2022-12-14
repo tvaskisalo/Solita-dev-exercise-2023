@@ -30,13 +30,12 @@ router.post('/', async(req, res) => {
     throw e
   }
   let departure_station = await stationService.getStation(departure_station_name, departure_station_id)
-  let return_station = await stationService.getStation(return_station_name, return_station_id)
-
   if (!departure_station) {
     //No need for try-catch since errors are automatically sent to error-handler
     departure_station = await stationService.addStation(departure_station_name, departure_station_id)
   }
 
+  let return_station = await stationService.getStation(return_station_name, return_station_id)
   if (!return_station) {
     //No need for try-catch since errors are automatically sent to error-handler
     return_station = await stationService.addStation(return_station_name, return_station_id)
@@ -68,10 +67,7 @@ router.get('/', async(req, res) => {
     distance,
     duration
   )
-  if (!trips) {
-    res.status(404).end()
-  }
-  if (trips.length === 0) {
+  if (!trips || trips.length === 0) {
     res.status(404).end()
   }
   res.json(trips)
