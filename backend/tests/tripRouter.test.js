@@ -37,7 +37,30 @@ describe('trip post /api/trip', () => {
     expect(trips[0].distance).toBe(trip.distance)
     expect(trips[0].duration).toEqual(trip.duration)
   })
-
+  test('A trip with the same departure and return station can be added', async () => {
+    const trip = {
+      departure_time: '2021-05-31T23:57:25',
+      return_time: '2021-06-01T00:05:46',
+      departure_station_name: 'Käpylän asema',
+      departure_station_id: 1,
+      return_station_name: 'Käpylän asema',
+      return_station_id: 1,
+      distance: 2043,
+      duration:500
+    }
+    await api
+      .post('/api/trip')
+      .send(trip)
+      .expect(201)
+    const station1 = await Station.find({ name: 'Käpylän asema', station_id: 1 })
+    expect(station1).not.toBe(null)
+    const trips = await Trip.find()
+    expect(trips.length).toBe(1)
+    expect(trips[0].departure_time).toEqual(trip.departure_time)
+    expect(trips[0].return_time).toEqual(trip.return_time)
+    expect(trips[0].distance).toBe(trip.distance)
+    expect(trips[0].duration).toEqual(trip.duration)
+  })
   test('Valid trip is added, when stations are correct and exist', async () => {
     await new Station({ name: 'Käpylän asema', station_id: 1 }).save()
     await new Station({ name: 'Oulunkylän asema', station_id: 2 }).save()
