@@ -1,28 +1,38 @@
 const Station = require('../models/station')
 const { validateStationName, validateId } = require('../utils/validators')
-//It is slightly redundant to check the arguments here and in the router, but it does not hurt anything.
 
+
+//Valid name is a non-empty string
+//Valid id is non-negative integer. Integer can be a number or string that can be parsed to number with Number()
 const addStation = async(name, id) => {
   //Validate the props
   if (!validateStationName(name) || !validateId(id)) {
-    throw new Error('Invalid station name or id')
+    const e  = new Error('Invalid station name or id')
+    e.name = 'ValidationError'
+    throw e
   }
   const new_station = new Station({ station_id: Number(id), name })
   return await new_station.save()
 }
 
-const getStationById = async(id) => {
-  if (!validateId(id)) {
-    throw new Error('Invalid id')
+//Valid name is a non-empty string
+//Valid id is non-negative integer. Integer can be a number or string that can be parsed to number with Number()
+//Either name or id can be missing or invalid, but not both. Invalid arguments are ignored
+const getStation = async(name, id) => {
+  if (id === undefined && name === undefined) {
+    const e = new Error('Missing name and id')
+    e.name = 'ValidationError'
+    throw e
   }
-  return await Station.findOne({ station_id: Number(id) })
-}
-
-const getStationByName = async(name) => {
-  if (!validateStationName(name)) {
-    throw new Error('Invalid name')
+  if (!validateId(id) && !validateStationName(name)) {
+    const e = new Error('Invalid station id and name')
+    e.name = 'ValidationError'
+    throw e
   }
-  return await Station.findOne({ name })
+  return await Station.findOne({
+    station_id: validateId(id) ? Number(id) : { $exists: true },
+    name: validateStationName(name) ? name : { $exists: true }
+  })
 }
 
 const getStations = async() => {
@@ -31,7 +41,6 @@ const getStations = async() => {
 
 module.exports = {
   addStation,
-  getStationById,
-  getStationByName,
-  getStations
+  getStation,
+  getStations,
 }

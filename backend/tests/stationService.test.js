@@ -90,32 +90,24 @@ describe('Station getters', () => {
     await new Station({ station_id: 2, name: 'Oulunkylän asema' }).save()
   }, 3000)
 
-  test('getStationById returns correct station with valid id', async() => {
-    const station = await stationService.getStationById('1')
+  test('getStation returns correct station with valid id', async() => {
+    const station = await stationService.getStation(undefined, '1')
     expect(station.station_id).toBe(1)
     expect(station.name).toBe('Käpylän asema')
   }, 2000)
 
-  test('getStationById throws error with invalid id', async () => {
-    () => expect(async () => await stationService.getStationById('id')).toThrow()
-  }, 2000)
-
-  test('getStationById throws error with undefined id', async () => {
-    () => expect(async () => await stationService.getStationById(undefined)).toThrow()
-  }, 2000)
-
-  test('getStationByName returns correct station with valid name', async() => {
-    const station = await stationService.getStationByName('Käpylän asema')
+  test('getStation returns correct station with valid name', async() => {
+    const station = await stationService.getStation('Käpylän asema', undefined)
     expect(station.station_id).toBe(1)
     expect(station.name).toBe('Käpylän asema')
   }, 2000)
 
-  test('getStationByName throws error with empty string', async () => {
-    () => expect(async () => await stationService.getStationByName('')).toThrow()
+  test('getStation throws error with empty string and invalid id', async () => {
+    () => expect(async () => await stationService.getStation('', 'id')).toThrow()
   }, 2000)
 
-  test('getStationByName throws error with undefined name', async () => {
-    () => expect(async () => await stationService.getStationByName(undefined)).toThrow()
+  test('getStation throws error with undefined name and undefined id', async () => {
+    () => expect(async () => await stationService.getStation(undefined, undefined)).toThrow()
   }, 2000)
 
 
@@ -127,4 +119,8 @@ describe('Station getters', () => {
     expect(stations[1].station_id).toBe(2)
     expect(stations[1].name).toBe('Oulunkylän asema')
   }, 2000)
+})
+
+afterAll(() => {
+  mongoose.connection.close()
 })
