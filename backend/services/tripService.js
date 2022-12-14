@@ -1,8 +1,11 @@
 const Trip = require('../models/trip')
 const Station = require('../models/station')
-const { validateTime, validateDistance, validateDuration, validateStationName } = require('../utils/validators')
-//It is slightly redundant to check the arguments here and in the router, but it does not hurt anything.
+const { validateTime, validateDistance, validateDuration, validateStationName, validateDurationWithTimes } = require('../utils/validators')
 
+//Departure_time and return_time must be valid dates and return time must be roughly duration amount of minutes ahead of departure_time
+//departure_station and return_station must be stations from the database
+//distance must be an integer larger than 9
+//duration must be and integer larger than 9 and roughly equal the difference between departure_time and return_time
 const addTrip = async(
   departure_time,
   return_time,
@@ -18,9 +21,11 @@ const addTrip = async(
     !departure_station ||
     !return_station ||
     !validateDistance(distance) ||
-    !validateDuration(duration)
+    !validateDurationWithTimes(departure_time, return_time, duration)
   ) {
-    throw new Error('Invalid or missing trip information')
+    const e = new Error('Invalid or missing trip information')
+    e.name = 'ValidationError'
+    throw e
   }
 
   const new_trip = new Trip({
@@ -61,12 +66,15 @@ const getTrips = async(
     return_station: return_station ? return_station._id : { '$exists': true },
     distance: validateDistance(distance) ? Number(distance) : { '$exists': true },
     duration: validateDuration(duration) ? Number(duration) : { '$exists': true }
-  })
+  }).populate('departure_station').populate('return_station')
 }
 
+//This refers to the id in the mongodb NOT station_id
 const getTripById = async(id) => {
   if (id === undefined) {
-    throw new Error('Missing id')
+    const e = new Error('Missing id')
+    e.name = 'ValidationError'
+    throw e
   }
   return await Trip.findById(id)
 }

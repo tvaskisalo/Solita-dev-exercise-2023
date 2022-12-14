@@ -1,4 +1,3 @@
-//These tests expect that stationService.test.js passes fully
 const Trip = require('../models/trip')
 const Station = require('../models/station')
 const tripService = require('../services/tripService')
@@ -240,4 +239,6 @@ describe('Trip getters', () => {
     expect(trip.length).toEqual(0)
   })
 })
-
+afterAll(() => {
+  mongoose.connection.close()
+})
