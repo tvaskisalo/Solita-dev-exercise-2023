@@ -16,7 +16,7 @@ const tripSchema = new mongoose.Schema({
   },
   return_station: {
     type: mongoose.Schema.Types.ObjectID,
-    ret: 'Station',
+    ref: 'Station',
     required: true
   },
   distance: {
