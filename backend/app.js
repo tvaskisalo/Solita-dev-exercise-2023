@@ -6,8 +6,9 @@ const tripRouter = require('./controllers/tripRouter')
 const stationRouter = require('./controllers/stationRouter')
 
 const mongoose = require('mongoose')
-const { MONGODB_URI } = require('./utils/config')
+const { MONGODB_URI, IMPORT_DATA_PATH, NODE_ENV } = require('./utils/config')
 const errorHandler = require('./utils/errorhandler')
+const { import_csv } = require('./utils/csv_importer')
 
 mongoose.connect(MONGODB_URI)
   .then(() => {
@@ -17,6 +18,21 @@ mongoose.connect(MONGODB_URI)
     console.log(e.message)
     console.log('error connecting')
   })
+//Check if path for importable data is given
+//Import the data to mongodb IF we are not in testing mode
+if (
+  (IMPORT_DATA_PATH) &&
+  ((NODE_ENV === 'production') || (NODE_ENV === 'development'))
+){
+  import_csv(IMPORT_DATA_PATH)
+    .then(() => {
+      console.log('Data imported')
+    })
+    .catch((e) => {
+      console.log(e.message)
+      console.log('Failed to import data from ' + IMPORT_DATA_PATH)
+    })
+}
 
 const app = express()
 

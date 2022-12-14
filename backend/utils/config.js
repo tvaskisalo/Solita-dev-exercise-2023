@@ -7,7 +7,13 @@ const MONGODB_URI = process.env.NODE_ENV === 'test'
 
 const PORT = process.env.PORT
 
+const IMPORT_DATA_PATH = process.env.IMPORT_DATA_PATH
+
+const NODE_ENV = process.env.NODE_ENV
+
 module.exports = {
   MONGODB_URI,
-  PORT
+  PORT,
+  IMPORT_DATA_PATH,
+  NODE_ENV
 }
