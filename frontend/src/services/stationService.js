@@ -7,7 +7,7 @@ const getStations = async(url) => {
     return res.data
   } catch(e) {
     //Handling no stations found error differently
-    if (e.response.status === 404) {
+    if (e.response && e.response.status === 404) {
       throw new Error('No stations found')
     }
     throw new Error('Failed to get station')
@@ -19,10 +19,12 @@ const getStationByName = async(url, name) => {
     const res = await axios.get(`${url}/${name}`)
     return res.data
   } catch (e) {
-    if (e.response.status === 404) {
+    //Handling no stations found error differently
+    if (e.response && e.response.status === 404) {
       throw new Error('No station found')
     }
-    if (e.response.staus === 400) {
+    if (e.response && e.response.staus === 400) {
+    //This way we can handle validation errors differently
       throw e
     }
     throw new Error('Failed to get station')
@@ -34,7 +36,8 @@ const addStation = async(url, name, station_id) => {
     const res = await axios.post(url, { name, station_id })
     return res.data
   } catch (e) {
-    if (e.response.staus === 400) {
+    //This way we can handle validation errors differently
+    if (e.response && e.response.staus === 400) {
       throw e
     }
     throw new Error('Failed to add station')

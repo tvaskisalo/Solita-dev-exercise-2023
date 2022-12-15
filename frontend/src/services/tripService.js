@@ -24,7 +24,8 @@ const addTrip = async(
     })
     return res.data
   } catch(e) {
-    if (e.response.status === 400) {
+    //This way we can handle validation errors differently
+    if (e.response && e.response.status === 400) {
       throw e
     }
     throw new Error('Failed to add trip')
@@ -55,10 +56,15 @@ const getTrips = async(
     )
     return res.data
   } catch(e) {
-    if (e.response.status === 400) {
+    //Handling no trips found error differently
+    if (e.response && e.response.status === 404) {
+      throw new Error('No trips found')
+    }
+    //This way we can handle validation errors differently
+    if (e.response && e.response.status === 400) {
       throw e
     }
-    throw new Error('Failed to add trip')
+    throw new Error('Failed to get trips')
   }
 }
 
