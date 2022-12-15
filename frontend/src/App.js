@@ -1,30 +1,21 @@
-import logo from './logo.svg'
-import './App.css'
 import React from 'react'
-import axios from 'axios'
-
+import { Route, Routes } from 'react-router-dom'
+import AddStation from './components/AddStation'
+import AddTrip from './components/AddTrip'
+import StationsView from './components/StationsView'
+import TripsView from './components/TripsView'
+const url = 'http://localhost:3001'
+console.log(url)
 function App() {
-
-  axios.post('http://localhost:3001/ping')
-    .then((e) => {
-      console.log(e)
-    })
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Routes>
+        <Route path = '/' element = { <div>todo</div> }/>
+        <Route path = '/addTrip' element = { <AddTrip /> }/>
+        <Route path = '/addStation' element = { <AddStation /> }/>
+        <Route path = '/stations' element = { <StationsView /> }/>
+        <Route path = '/trips' element = { <TripsView /> }/>
+      </Routes>
     </div>
   )
 }
