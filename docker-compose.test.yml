@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  mongodb_test:
+    image: mongo:latest
+    container_name: mongodb_test
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: pass
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongodb_test_data:/data/db
+  backend_test:
+    image: backend_test
+    environment: 
+      - PORT=3001
+      - MONGODB_TEST_URI=mongodb://root:pass@mongodb:27017
+      # We will pass the test mongodb to the actual backend as well. This is for e2e tests
+      - MONGODB_URI=mongodb://root:pass@mongodb:27017
+    build: 
+      context: ./backend
+      dockerfile: ./test.Dockerfile
+    ports:
+      - 3001:3001
+    container_name: backend_test
+    depends_on: 
+      - mongodb_test
+    # healthcheck is needed to check when backend is running properly
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost:3001/ping"]
+        interval: 10s
+        timeout: 5s
+        retries: 5
+  frontend_test:
+    image: frontend_test
+    volumes:
+      - ./frontend/nginx.conf:/etc/nginx/nginx.conf:ro
+    build:
+      context: ./frontend
+      dockerfile: ./test.Dockerfile 
+    ports:
+      - 3000:80
+    container_name: frontend_test
+    depends_on: 
+      backend_test:
+        condition: service_healthy
+  nginx:
+    image: nginx:1.20.1
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 8080:80
+    container_name: reverse-proxy
+    depends_on:
+      - frontend_test # wait for the frontend container to be started
+      - backend_test
