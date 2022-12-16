@@ -5,6 +5,7 @@ import AddTrip from './components/AddTrip'
 import StationsView from './components/StationsView'
 import TripsView from './components/TripsView'
 import Navigationbar from './components/Navigationbar'
+import SingleStationView from './components/SingleStationView'
 const url = 'http://localhost:3001'
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <Navigationbar />
       <Routes>
         <Route path = '/' element = { <div>todo</div> }/>
+        <Route path = '/stations/:name' element = { <SingleStationView url = { url + '/api/station' } />}/>
         <Route path = '/addTrip' element = { <AddTrip url = { url + '/api/trip'}/> }/>
         <Route path = '/addStation' element = { <AddStation url={ url +'/api/station' } /> }/>
         <Route path = '/stations' element = { <StationsView url={ url +'/api/station' } /> }/>
