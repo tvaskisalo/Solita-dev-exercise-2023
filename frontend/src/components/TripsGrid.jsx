@@ -14,20 +14,9 @@ const columns  = [
   { field: 'duration', headerName: 'Duration (min)', width: 180, type: 'number' },
 ]
 const Trips = ({ trips }) => {
-  const parsed_trips = trips.map(trip => {
-    return {
-      ...trip,
-      distance: trip.distance/1000,
-      duration: trip.duration/60,
-      departure_station_name: trip.departure_station.name,
-      departure_station_station_id: trip.departure_station.station_id,
-      return_station_name: trip.return_station.name,
-      return_station_station_id: trip.return_station.station_id
-    }
-  })
-  return <Box sx={{ height: 2711, width: '90%', m: 5, align: 'center' }}>
+  return <Box sx={{ height: 2711, width: '90%' }}>
     <DataGrid
-      rows={parsed_trips}
+      rows={trips}
       columns={columns}
       pageSize={50}
       rowsPerPageOptions={[50]}
