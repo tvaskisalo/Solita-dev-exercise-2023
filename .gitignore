@@ -126,4 +126,9 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
+# ignore csv files
 backend/data/*
+
+#Ignore docker volumes
+mongodb_data/
+mongodb_test_data/
