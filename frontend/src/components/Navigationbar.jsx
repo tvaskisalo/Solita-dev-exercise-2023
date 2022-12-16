@@ -10,7 +10,6 @@ const Navigationbar = () => {
     <AppBar position="static">
       <Toolbar variant='dense'>
         <Button sx={{ mx:'auto' }} onClick={ () => navigate('/stations') } variant='contained' color='info'> View stations </Button>
-        <Button sx={{ mx:'auto' }} onClick={ () => navigate('/station') } variant='contained' color='info'> View station data </Button>
         <Button sx={{ mx:'auto' }} onClick={ () => navigate('/trips') } variant='contained' color='info'> View trips </Button>
         <Button sx={{ mx:'auto' }} onClick={ () => navigate('/addTrip') } variant='contained' color='info'> Add trip </Button>
         <Button sx={{ mx:'auto' }} onClick={ () => navigate('/addStation') } variant='contained' color='info'> Add station </Button>
