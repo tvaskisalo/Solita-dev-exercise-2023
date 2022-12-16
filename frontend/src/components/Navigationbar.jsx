@@ -16,7 +16,6 @@ const Navigationbar = () => {
       </Toolbar>
     </AppBar>
   )
-
 }
 
 export default Navigationbar
