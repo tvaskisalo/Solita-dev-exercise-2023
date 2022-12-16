@@ -1,23 +1,11 @@
-import React, { useState, useEffect } from 'react'
-import stationService from '../services/stationService'
+import React, { useState } from 'react'
 import propTypes from 'prop-types'
 import StationsGrid from './StationsGrid'
 import TextField from '@mui/material/TextField'
 import Box from '@mui/material/Box'
 
-const StationsView = ({ url }) => {
-  const [stations, setStations] = useState([])
+const StationsView = ({ stations }) => {
   const [name, setName] = useState('')
-  useEffect(() => {
-    stationService.getStations(url)
-      .then((data) =>  {
-        setStations(data)
-      })
-      .catch(() => {
-        setStations([])
-        return <div>Failed to get stations</div>
-      })
-  }, [])
   //Update the name (case insensitive) to filter stations.
   const update_filter = (event) => setName(event.target.value.toLowerCase())
   if (stations.length === 0) {
@@ -32,7 +20,12 @@ const StationsView = ({ url }) => {
 }
 
 StationsView.propTypes = {
-  url: propTypes.string
+  stations: propTypes.arrayOf(
+    propTypes.shape({
+      name: propTypes.string,
+      station_id: propTypes.number
+    })
+  )
 }
 
 export default StationsView

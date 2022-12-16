@@ -3,6 +3,7 @@ import propTypes from 'prop-types'
 import { DataGrid } from '@mui/x-data-grid'
 import Box from '@mui/material/Box'
 
+//Definitons for the grid
 const columns  = [
   { field: 'departure_time', headerName: 'Departure time ', width: 180 },
   { field: 'return_time', headerName: 'Return time ', width: 180 },
@@ -13,7 +14,7 @@ const columns  = [
   { field: 'distance', headerName: 'Distance (km)', width: 180, type: 'number' },
   { field: 'duration', headerName: 'Duration (min)', width: 180, type: 'number' },
 ]
-const Trips = ({ trips }) => {
+const TripsGrid = ({ trips }) => {
   return <Box sx={{ height: 2711, width: '90%' }}>
     <DataGrid
       rows={trips}
@@ -25,7 +26,8 @@ const Trips = ({ trips }) => {
     />
   </Box>
 }
-Trips.propTypes = {
+
+TripsGrid.propTypes = {
   trips: propTypes.arrayOf(
     propTypes.shape({
       departure_time: propTypes.string,
@@ -46,4 +48,4 @@ Trips.propTypes = {
   )
 }
 
-export default Trips
+export default TripsGrid
