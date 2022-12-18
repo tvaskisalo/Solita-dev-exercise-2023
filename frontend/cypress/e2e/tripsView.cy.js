@@ -4,7 +4,7 @@ describe('Trips view', () => {
     cy.request('POST', 'http://localhost:3001/test/initState')
     cy.visit('http://localhost:3000/trips')
   })
-  it('TripsView shows correct trips', function() {
+  it('TripsView shows correct trips from db', function() {
     cy.contains('Departure time')
     cy.contains('Return time')
     cy.contains('Departure Station')
