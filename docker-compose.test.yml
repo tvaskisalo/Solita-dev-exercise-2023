@@ -7,6 +7,7 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: pass
+    command: mongod --quiet --logpath /dev/null 
     ports:
       - 27017:27017
     volumes:
@@ -15,9 +16,7 @@ services:
     image: backend_test
     environment: 
       - PORT=3001
-      - MONGODB_TEST_URI=mongodb://root:pass@mongodb:27017
-      # We will pass the test mongodb to the actual backend as well. This is for e2e tests
-      - MONGODB_URI=mongodb://root:pass@mongodb:27017
+      - MONGODB_URI_TEST=mongodb://root:pass@mongodb_test:27017
     build: 
       context: ./backend
       dockerfile: ./test.Dockerfile
@@ -40,7 +39,7 @@ services:
       context: ./frontend
       dockerfile: ./test.Dockerfile 
     ports:
-      - 3000:80
+      - 3000:3000
     container_name: frontend_test
     depends_on: 
       backend_test:
