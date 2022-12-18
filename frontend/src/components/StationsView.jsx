@@ -14,7 +14,7 @@ const StationsView = ({ stations }) => {
   return <div>
     <Box sx={{ display: 'flex', m: 5 }}>
       <StationsGrid stations={stations.filter(station => station.name.toLowerCase().includes(name))} />
-      <TextField sx={{ mx: 5 }} label='Filter by name' type='search' onChange={(event) => update_filter(event)}/>
+      <TextField id='stationNameFilter' sx={{ mx: 5 }} label='Filter by name' type='search' onChange={(event) => update_filter(event)}/>
     </Box>
   </div>
 }

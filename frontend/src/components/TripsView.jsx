@@ -40,35 +40,35 @@ const TripsView = ({ trips }) => {
     <TripsGrid trips={trips.filter(trip => filter(trip))} />
     <div>
       <div>
-        <TextField sx={{ mb: 2, mx: 2 }} label='Departure time' type='search'
-          onChange={(event) => setDeparture_time(event.target.value.toLowerCase())}/>
+        <TextField id='departureTimeFilter' sx={{ mb: 2, mx: 2 }} label='Filter departure time' type='search'
+          onChange={(event) => setDeparture_time(event.target.value)}/>
       </div>
       <div>
-        <TextField sx={{ m: 2 }} label='Return time' type='search'
-          onChange={(event) => setReturn_time(event.target.value.toLowerCase())}/>
+        <TextField id='returnTimeFilter' sx={{ m: 2 }} label='Filter return time' type='search'
+          onChange={(event) => setReturn_time(event.target.value)}/>
       </div>
       <div>
-        <TextField sx={{ m: 2 }} label='Departure station name' type='search'
+        <TextField id='departureStationNameFilter' sx={{ m: 2 }} label='Filter departure station name' type='search'
           onChange={(event) => setDeparture_station_name(event.target.value.toLowerCase())}/>
       </div>
       <div>
-        <TextField sx={{ m: 2 }} label='Return station name' type='search'
+        <TextField id='returnStationNameFilter' sx={{ m: 2 }} label='Filter return station name' type='search'
           onChange={(event) => setReturn_station_name(event.target.value.toLowerCase())}/>
       </div>
       <div>
-        <TextField sx={{ m: 2 }} label='Distance min' type='number'
+        <TextField id='distanceMinFilter' sx={{ m: 2 }} label='Distance minimum' type='number'
           onChange={(event) => setDistance_min(event.target.value)}/>
       </div>
       <div>
-        <TextField sx={{ m: 2 }} label='Distance max' type='number'
+        <TextField id='distanceMaxFilter' sx={{ m: 2 }} label='Distance maximum' type='number'
           onChange={(event) => setDistance_max(!event.target.value ? Number.MAX_SAFE_INTEGER : event.target.value)}/>
       </div>
       <div>
-        <TextField sx={{ m: 2 }} label='Duration min' type='number'
+        <TextField id='durationMinFilter' sx={{ m: 2 }} label='Duration minimum' type='number'
           onChange={(event) => setDuration_min(event.target.value)}/>
       </div>
       <div>
-        <TextField sx={{ m: 2 }} label='Duration max' type='number'
+        <TextField id='durationMaxFilter' sx={{ m: 2 }} label='Duration maximum' type='number'
           onChange={(event) => setDuration_max(!event.target.value ? Number.MAX_SAFE_INTEGER : event.target.value)}/>
       </div>
     </div>

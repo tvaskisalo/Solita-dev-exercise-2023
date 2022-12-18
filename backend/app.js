@@ -4,18 +4,18 @@ require('express-async-errors')
 const pingRouter = require('./controllers/ping')
 const tripRouter = require('./controllers/tripRouter')
 const stationRouter = require('./controllers/stationRouter')
-
 const mongoose = require('mongoose')
 const { MONGODB_URI, IMPORT_DATA_PATH, NODE_ENV } = require('./utils/config')
 const errorHandler = require('./utils/errorhandler')
 const { import_csv } = require('./utils/csv_importer')
+
 
 mongoose.connect(MONGODB_URI)
   .then(() => {
     console.log('Connected succesfully')
   })
   .catch((e) => {
-    console.log(e.message)
+    console.log(e)
     console.log('error connecting')
   })
 //Check if path for importable data is given
@@ -39,6 +39,10 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
+if (NODE_ENV === 'test') {
+  const testRouter = require('./controllers/testRouter')
+  app.use('/test', testRouter)
+}
 app.use('/ping', pingRouter)
 app.use('/api/trip', tripRouter)
 app.use('/api/station', stationRouter)
