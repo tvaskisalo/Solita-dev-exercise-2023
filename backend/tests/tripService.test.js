@@ -4,8 +4,8 @@ const tripService = require('../services/tripService')
 const mongoose = require('mongoose')
 const { MONGODB_URI } = require('../utils/config')
 
-beforeAll(async() => {
-  await mongoose.connect(MONGODB_URI)
+beforeAll(() => {
+  mongoose.connect(MONGODB_URI)
 }, 2000)
 
 

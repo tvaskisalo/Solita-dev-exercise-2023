@@ -3,9 +3,9 @@ const Station = require('../models/station')
 const mongoose = require('mongoose')
 const { MONGODB_URI } = require('../utils/config')
 
-beforeAll(async() => {
-  await mongoose.connect(MONGODB_URI)
-}, 2000)
+beforeAll(() => {
+  mongoose.connect(MONGODB_URI)
+}, 5000)
 
 describe('Station addition', () => {
   beforeEach(async() => {
