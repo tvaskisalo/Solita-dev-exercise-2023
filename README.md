@@ -3,39 +3,39 @@
 ## Features
 
 - Frontend
-  1. Frontend shows all trips, with pagination, and you can filter them based on all values. It will show all the trips' fields.
-  2. Frontend shows all stations, with pagination, and you can filter them based on name.
-  3. Clicking on a station will open a page with more info about the station and trips
-  4. Easy navigation with a navigationbar
-  5. Eslint is used for codingstyle and quality.
-
+  * Frontend shows all trips, with pagination, and you can filter them based on all values. It will show all the trips' fields.
+  * Frontend shows all stations, with pagination, and you can filter them based on name.
+  * Clicking on a station will open a page with more info about the station and trips
+  * Easy navigation with a navigationbar
+  * Eslint is used for codingstyle and quality.
+     
 - Backend
-  1. Backend supports fetching all trips, or trips based on given values (e.g. all trips where duration is 60 seconds)
-  2. Backend supports fetching all stations, or station based on station's id or name.
-  3. Fetching one station with station's id or name returns additional statistics on the station.
-  4. Backend also supports adding new trips and stations. 
-  5. All requests are validated.
-  6. Backend supports automatic csv-file parsing and importing to mongoDB from a directory. All data from csv-files are also validated.
-  7. Eslint is used for codingstyle and quality.
+  * Backend supports fetching all trips, or trips based on given values (e.g. all trips where duration is 60 seconds)
+  * Backend supports fetching all stations, or station based on station's id or name.
+  * Fetching one station with station's id or name returns additional statistics on the station.
+  * Backend also supports adding new trips and stations.
+  * All requests are validated.
+  * Backend supports automatic csv-file parsing and importing to mongoDB from a directory. All data from csv-files are also validated.
+  * Eslint is used for codingstyle and quality.
 
 - Other:
-  1. The project implements docker-compose for easy use and testing. This also removes the need for an .env file.
-  2. End to end testing is implemented for the project with cypress and docker-compose. Currently cypress is not in the docker-compose
+  * The project implements docker-compose for easy use and testing. This also removes the need for an .env file.
+  * End to end testing is implemented for the project with cypress and docker-compose. Currently cypress is not in the docker-compose
   but docker-compose is used to start a testing environment for cypress.
 
 ### Tech stack
 - Frontend
-  1. React, due to being my most used frontend library
-  2. React-router, to create easy routing
-  3. Axios
-  4. Material UI for basic UI creation
-  5. Material UIX for the data-grid
-  6. Testing is implemented with cypress and jest.
+  * React, due to being my most used frontend library
+  * React-router, to create easy routing
+  * Axios
+  * Material UI for basic UI creation
+  * Material UIX for the data-grid
+  * Testing is implemented with cypress and jest.
 
 - Backend
-  1. NodeJS with expressJS as the framework
-  2. Mongoose for communication with mongoDB
-  3. Testing is implemented with jest and supertest.
+  * NodeJS with expressJS as the framework
+  * Mongoose for communication with mongoDB
+  * Testing is implemented with jest and supertest.
 
 Additionally Docker and Docker-compose are used
 
