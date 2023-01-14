@@ -529,6 +529,27 @@ describe('trip post /api/trip', () => {
     const trips = await Trip.find()
     expect(trips.length).toBe(0)
   })
+  test('Validation error is returned when duration does not match departure and return time', async () => {
+    const trip = {
+      departure_time: '2021-05-31T23:57:25',
+      return_time: '2021-06-01T00:05:46',
+      departure_station_name: 'Käpylän asema',
+      departure_station_id: 1,
+      return_station_name: 'Oulunkylän asema',
+      return_station_id: 2,
+      distance: 2043,
+      duration: 15
+    }
+    const res = await api
+      .post('/api/trip')
+      .send(trip)
+      .expect(400)
+    expect(res.error.text).toMatch('ValidationError')
+    const stations = await Station.find()
+    expect(stations.length).toBe(0)
+    const trips = await Trip.find()
+    expect(trips.length).toBe(0)
+  })
 })
 
 describe('trip get /api/trip', () => {

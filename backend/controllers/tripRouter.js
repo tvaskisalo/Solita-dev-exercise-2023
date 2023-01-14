@@ -1,7 +1,7 @@
 const express = require('express')
 const tripService = require('../services/tripService')
 const stationService = require('../services/stationService')
-const { validateId, validateTime, validateDistance, validateDuration, validateStationName } = require('../utils/validators')
+const { validateId, validateTime, validateDistance, validateDurationWithTimes, validateStationName } = require('../utils/validators')
 const router = express.Router()
 
 
@@ -23,7 +23,7 @@ router.post('/', async(req, res) => {
     !validateStationName(return_station_name) ||
     !validateId(return_station_id) ||
     !validateDistance(distance) ||
-    !validateDuration(duration)
+    !validateDurationWithTimes(departure_time, return_time, duration)
   ) {
     const e = new Error('Invalid or missing trip information')
     e.name = 'ValidationError'
