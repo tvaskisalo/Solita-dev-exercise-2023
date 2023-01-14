@@ -26,7 +26,7 @@ const addTrip = async(
   } catch(e) {
     //This way we can handle validation errors differently
     if (e.response && e.response.status === 400) {
-      throw e
+      throw new Error('Invalid or missing trip information')
     }
     throw new Error('Failed to add trip')
   }
@@ -62,7 +62,7 @@ const getTrips = async(
     }
     //This way we can handle validation errors differently
     if (e.response && e.response.status === 400) {
-      throw e
+      throw new Error('Invalid or missing trip information')
     }
     throw new Error('Failed to get trips')
   }

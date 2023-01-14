@@ -25,7 +25,7 @@ const getStationByName = async(url, name) => {
     }
     if (e.response && e.response.staus === 400) {
     //This way we can handle validation errors differently
-      throw e
+      throw new Error('Invalid or missing station information')
     }
     throw new Error('Failed to get station')
   }
@@ -38,7 +38,7 @@ const addStation = async(url, name, station_id) => {
   } catch (e) {
     //This way we can handle validation errors differently
     if (e.response && e.response.staus === 400) {
-      throw e
+      throw new Error('Invalid or missing station information')
     }
     throw new Error('Failed to add station')
   }
