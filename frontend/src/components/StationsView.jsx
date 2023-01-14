@@ -8,9 +8,6 @@ const StationsView = ({ stations }) => {
   const [name, setName] = useState('')
   //Update the name (case insensitive) to filter stations.
   const update_filter = (event) => setName(event.target.value.toLowerCase())
-  if (stations.length === 0) {
-    return <div>Loading...</div>
-  }
   return <div>
     <Box sx={{ display: 'flex', m: 5 }}>
       <StationsGrid stations={stations.filter(station => station.name.toLowerCase().includes(name))} />

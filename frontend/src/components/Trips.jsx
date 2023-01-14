@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import tripService from '../services/tripService'
 import propTypes from 'prop-types'
 import TripsView from './TripsView'
+import Alert from '@mui/material/Alert'
 
 
 const Trips = ({ url }) => {
@@ -29,7 +30,7 @@ const Trips = ({ url }) => {
       })
   }, [])
   if (errorMsg) {
-    return <div>{errorMsg}</div>
+    return <Alert severity='error'>{errorMsg}</Alert>
   }
   if (trips.length === 0) {
     return <div> Loading... </div>

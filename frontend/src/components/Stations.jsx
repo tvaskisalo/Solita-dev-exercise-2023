@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react'
 import stationService from '../services/stationService'
 import propTypes from 'prop-types'
 import StationsView from './StationsView'
+import Alert from '@mui/material/Alert'
 
 const Stations = ({ url }) => {
   const [stations, setStations] = useState([])
+  const [errorMsg, setErrorMsg] = useState('')
   useEffect(() => {
     stationService.getStations(url)
       .then((data) =>  {
@@ -12,9 +14,15 @@ const Stations = ({ url }) => {
       })
       .catch(() => {
         setStations([])
-        return <div>Failed to get stations</div>
+        setErrorMsg('Failed to get stations')
       })
   }, [])
+  if (errorMsg) {
+    return <Alert severity='error'>{errorMsg}</Alert>
+  }
+  if (stations.length === 0) {
+    return <div>Loading...</div>
+  }
   return <StationsView stations = { stations }/>
 }
 
