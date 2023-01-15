@@ -1,7 +1,7 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render } from '@testing-library/react'
-import StationForm from '../components/StationForm'
+import StationForm from '../components/add-station/StationForm'
 import userEvent from '@testing-library/user-event'
 
 describe('Form is rendered correctly', () => {

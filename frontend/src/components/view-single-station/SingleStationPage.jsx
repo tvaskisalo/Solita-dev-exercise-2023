@@ -2,7 +2,7 @@ import SingleStationView from './SingleStationView'
 import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import propTypes from 'prop-types'
-import stationService from '../services/stationService'
+import stationService from '../../services/stationService'
 
 const SingleStation = ({ url }) => {
   const [station, setStation] = useState('')

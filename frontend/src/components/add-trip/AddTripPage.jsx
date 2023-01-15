@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import TripForm from './TripForm'
-import tripService from '../services/tripService'
+import tripService from '../../services/tripService'
 import propTypes from 'prop-types'
 import Container from '@mui/material/Container'
 import Alert from '@mui/material/Alert'
@@ -26,22 +26,20 @@ const AddTripView = ({ url }) => {
       return_station_name,
       return_station_id,
       distance,
-      duration)
-      .then(() => {
-        setSuccess(true)
-        setErrMsg('')
-        setTimeout(() => setSuccess(false), 5000)
-      })
-      .catch((error) => {
-        setErrMsg(error.message)
-        setSuccess(false)
-        setTimeout(() => setErrMsg(''), 5000)
-      })
+      duration).then(() => {
+      setSuccess(true)
+      setErrMsg('')
+      setTimeout(() => setSuccess(false), 5000)
+    }).catch((error) => {
+      setErrMsg(error.message)
+      setSuccess(false)
+      setTimeout(() => setErrMsg(''), 5000)
+    })
   }
   return (
     <Container maxWidth='sm' sx={{ my: 5 }}>
-      {errMsg ? <Alert severity='error'>{errMsg}</Alert> : <div/>}
-      {success ? <Alert severity='success'>Added trip!</Alert>: <div/>}
+      {errMsg ? <Alert sx={{ m:1 }} severity='error'>{errMsg}</Alert> : <div/>}
+      {success ? <Alert sx={{ m:1 }} severity='success'>Added trip!</Alert>: <div/>}
       <TripForm addTrip={handleTripAddition}/>
     </Container>
   )

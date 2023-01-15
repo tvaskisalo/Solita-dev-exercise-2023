@@ -1,11 +1,11 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import AddStationView from './components/AddStationView'
-import AddTripView from './components/AddTripView'
-import Stations from './components/Stations'
-import Trips from './components/Trips'
+import AddStationPage from './components/add-station/AddStationPage'
+import AddTripPage from './components/add-trip/AddTripPage'
+import StationsPage from './components/view-stations/StationsPage'
+import TripsPage from './components/view-trips/TripsPage'
 import Navigationbar from './components/Navigationbar'
-import SingleStation from './components/SingleStation'
+import SingleStationPage from './components/view-single-station/SingleStationPage'
 const url = 'http://localhost:3001'
 
 function App() {
@@ -14,11 +14,11 @@ function App() {
       <Navigationbar />
       <Routes>
         <Route path = '/' element = { <div>todo</div> }/>
-        <Route path = '/stations' element = { <Stations url={ url +'/api/station' } /> }/>
-        <Route path = '/stations/:name' element = { <SingleStation url = { url + '/api/station' } />}/>
-        <Route path = '/addTrip' element = { <AddTripView url = { url + '/api/trip'}/> }/>
-        <Route path = '/addStation' element = { <AddStationView url={ url +'/api/station' } /> }/>
-        <Route path = '/trips' element = { <Trips url={ url + '/api/trip'}/> }/>
+        <Route path = '/stations' element = { <StationsPage url={ url +'/api/station' } /> }/>
+        <Route path = '/stations/:name' element = { <SingleStationPage url = { url + '/api/station' } />}/>
+        <Route path = '/addTrip' element = { <AddTripPage url = { url + '/api/trip'}/> }/>
+        <Route path = '/addStation' element = { <AddStationPage url={ url +'/api/station' } /> }/>
+        <Route path = '/trips' element = { <TripsPage url={ url + '/api/trip'}/> }/>
       </Routes>
     </div>
   )

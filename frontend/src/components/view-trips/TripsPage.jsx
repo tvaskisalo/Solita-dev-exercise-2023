@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import tripService from '../services/tripService'
+import tripService from '../../services/tripService'
 import propTypes from 'prop-types'
 import TripsView from './TripsView'
 import Alert from '@mui/material/Alert'

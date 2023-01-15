@@ -1,7 +1,7 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render } from '@testing-library/react'
-import TripForm from '../components/TripForm'
+import TripForm from '../components/add-trip/TripForm'
 import userEvent from '@testing-library/user-event'
 
 describe('Form is rendered correctly', () => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render, screen } from '@testing-library/react'
-import SingleStationView from '../components/SingleStationView'
+import SingleStationView from '../components/view-single-station/SingleStationView'
 
 const station = {
   name: 'Käpylän asema',

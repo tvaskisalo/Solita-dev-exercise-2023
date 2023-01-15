@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import stationService from '../services/stationService'
+import stationService from '../../services/stationService'
 import propTypes from 'prop-types'
 import StationsView from './StationsView'
 import Alert from '@mui/material/Alert'
