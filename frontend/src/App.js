@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, Navigate } from 'react-router-dom'
 import AddStationPage from './components/add-station/AddStationPage'
 import AddTripPage from './components/add-trip/AddTripPage'
 import StationsPage from './components/view-stations/StationsPage'
@@ -13,7 +13,7 @@ function App() {
     <div>
       <Navigationbar />
       <Routes>
-        <Route path = '/' element = { <div>todo</div> }/>
+        <Route path = '/' element = { <Navigate to='/trips' /> }/>
         <Route path = '/stations' element = { <StationsPage url={ url +'/api/station' } /> }/>
         <Route path = '/stations/:name' element = { <SingleStationPage url = { url + '/api/station' } />}/>
         <Route path = '/addTrip' element = { <AddTripPage url = { url + '/api/trip'}/> }/>
