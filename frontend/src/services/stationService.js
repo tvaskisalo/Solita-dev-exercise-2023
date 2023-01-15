@@ -37,7 +37,7 @@ const addStation = async(url, name, station_id) => {
     return res.data
   } catch (e) {
     //This way we can handle validation errors differently
-    if (e.response && e.response.staus === 400) {
+    if (e.response && e.response.status === 400) {
       throw new Error('Invalid or missing station information')
     }
     throw new Error('Failed to add station')
