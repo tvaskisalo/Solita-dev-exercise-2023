@@ -33,7 +33,6 @@ const AddTripView = ({ url }) => {
         setTimeout(() => setSuccess(false), 5000)
       })
       .catch((error) => {
-        console.log(error)
         setErrMsg(error.message)
         setSuccess(false)
         setTimeout(() => setErrMsg(''), 5000)

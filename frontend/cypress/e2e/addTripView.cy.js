@@ -80,7 +80,6 @@ describe('Valid trip addition', () => {
     cy.contains('100')
   })
 })
-//cy.request({method: 'GET', url: 'http://localhost:3001/api/trips', failOnStatusCode: false}).its('status').should('equal', 404)
 describe('Invalid trip addition', function() {
   beforeEach(function() {
     cy.request('POST', 'http://localhost:3001/test/reset')
