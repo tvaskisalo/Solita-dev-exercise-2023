@@ -1,5 +1,8 @@
 # Project for Solita dev academy 2023
 
+This is my solution to the Solita dev academy 2023 Spring exercise.
+This project is done with React and expressJS using Javascript.
+
 ## Features
 
 - Frontend
@@ -40,13 +43,23 @@
 
 Additionally Docker and Docker-compose are used.
 
+I wrote the entire project with Javascript and not Typescript to save on development time and used testing to compensate not having typing.
+
 ## Running the project
+
+The project can be run on linux either manually or with docker-compose (see below) or on windows 10 with docker-compose. Running the project manually on windows 10 has not been confirmed. Please use docker-compose either way.
+
+Requirements:
+- npm
+- nodejs
+- Docker
+- Docker-compose
+
+It is recommended to delete the containers and images after you don't need them, since they take up a lot of space.
 
 ### Docker-compose
 
 Project is meant to be run with docker-compose and it is highly recommended. Running the project with Docker-compose is the easiest way, since no .env file needs to be configured. Make sure that ports 3000, 3001 and 27017 are available, if not configure docker-compose.prodution.yml and nginx.conf to other ports.
-
-For running the project with Docker-compose, Docker and Docker-compose are needed.
 
 Project can be run by running
 ```
@@ -109,8 +122,7 @@ at ./frontend
 ## Testing
 
 ### Docker-compose
-To run the tests, Docker-compose is recommended. This way you don't have to configure the .env for the backend tests. Docker-compose will run both frontend and backend tests with one command. To run test with Docker-compose both Docker and Docker-compose are needed.
-
+To run the tests, Docker-compose is recommended. This way you don't have to configure the .env for the backend tests. Docker-compose will run both frontend and backend tests with one command.
 Test with Docker-compose can be run with running: 
 ```
 docker-compose -f docker-compose.test.yml up --build
@@ -167,24 +179,26 @@ To run the tests, start the frontend and backend in testing mode. I highly recom
 
 Frontend is expected to be running at localhost:3000 and backend at localhost:3001.
 
-When both frontend and backend are running, open another terminal and run
+When both frontend and backend are running, open another terminal and run the following commands at ./frontend/:
+
+```
+npm install
+```
+then
 
 ```
 npm run test:e2e
 ```
-
-or 
-
+to run end to end tests on the terminal or 
 ```
 npm run cypress:open
 ```
-
-at ./frontend/ to start the e2e tests.
+to run end to end tests with a browser
 
 ## Features that I wanted to do.
 
-1. Better error handling in frontend.
+1. Better error handling in the frontend.
 2. Better UI. Current UI is rather simple.
-3. Station location.
+3. Station location in single station view.
 4. Running the project in Cloud.
 5. More interesting statistics about the stations and trips.
