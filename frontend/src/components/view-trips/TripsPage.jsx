@@ -35,6 +35,7 @@ const TripsPage = ({ url }) => {
   if (trips.length === 0) {
     return <div> Loading... </div>
   }
+  //Pass trips to tripsView, which will render them.
   return <TripsView trips = { trips }/>
 }
 

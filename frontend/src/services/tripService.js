@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+//Sends a post request to url with body of the given args.
 const addTrip = async(
   url,
   departure_time,
@@ -32,6 +33,7 @@ const addTrip = async(
   }
 }
 
+//Sends a get request to url with search params of given argumets.
 const getTrips = async(
   url,
   departure_time,

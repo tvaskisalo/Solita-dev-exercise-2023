@@ -27,6 +27,7 @@ const SingleStationPage = ({ url }) => {
   if (!station) {
     return <div>Loading</div>
   }
+  //Pass station to SingleStationView which will render the station.
   return <SingleStationView station = { station }/>
 }
 

@@ -14,6 +14,7 @@ const getStations = async(url) => {
   }
 }
 
+//Sends a get request to url/name
 const getStationByName = async(url, name) => {
   try {
     const res = await axios.get(`${url}/${name}`)
@@ -31,6 +32,7 @@ const getStationByName = async(url, name) => {
   }
 }
 
+//Makes a post request to url with body of name and station_id
 const addStation = async(url, name, station_id) => {
   try {
     const res = await axios.post(url, { name, station_id })

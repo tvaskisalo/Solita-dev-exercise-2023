@@ -26,7 +26,7 @@ const AddStationPage = ({ url }) => {
   return (
     <Container maxWidth = 'sm' sx = {{ my: 5 }}>
       { errMsg
-        ? <Alert sx = {{ m:1 }} severity = 'error'>{errMsg}</Alert>
+        ? <Alert sx = {{ m:1 }} severity = 'error'>{ errMsg }</Alert>
         : <div/> }
       { success
         ? <Alert sx = {{ m:1 }} severity = 'success'>Added station!</Alert>

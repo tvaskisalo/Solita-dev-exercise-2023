@@ -23,6 +23,7 @@ const Stations = ({ url }) => {
   if (stations.length === 0) {
     return <div>Loading...</div>
   }
+  //Pass stations to StationsView, which will render them.
   return <StationsView stations = { stations }/>
 }
 
