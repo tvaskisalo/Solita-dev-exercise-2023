@@ -27,7 +27,7 @@ api will validate the stations and the given variables before addition.
 
 If departure station of return station do not exist in the database they will be added to the database.
 
-Status 400 will be given if validation fails for either of the stations or the trip. See data\_validation.md document for more info.
+Status 400 will be given if validation fails for either of the stations or the trip. See [data\_validation.md](./data_validation.md) document for more info.
 
 Status 201 will be given on success.
 
@@ -69,7 +69,7 @@ station_id: 1
 ```
 will add a new station with name 'Käpylän asema' with station\_id 1.
 
-Api will validate the name and station\_id before addition. See data\_validation.md
+Api will validate the name and station\_id before addition. See [data\_validation.md](./data_validation.md) for more info.
 
 On success status 201 is returned
 
@@ -88,6 +88,7 @@ Will return all the stations from the database with the given name.
 Status 404 is given if no stations are found.
 
 ## /api/test
+
 This is only available when the node environment is set to test
 
 ### POST /api/test/reset
