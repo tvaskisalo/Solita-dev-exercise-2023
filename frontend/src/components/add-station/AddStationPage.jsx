@@ -5,13 +5,10 @@ import propTypes from 'prop-types'
 import Container from '@mui/material/Container'
 import Alert from '@mui/material/Alert'
 
-const AddStationView = ({ url }) => {
+const AddStationPage = ({ url }) => {
   const [errMsg, setErrMsg] = useState('')
   const [success, setSuccess] = useState(false)
-  const handleStationAddition = (
-    name,
-    station_id
-  ) => {
+  const handleStationAddition = (name, station_id) => {
     stationService.addStation(
       url,
       name,
@@ -27,15 +24,20 @@ const AddStationView = ({ url }) => {
     })
   }
   return (
-    <Container maxWidth='sm' sx={{ my: 5 }}>
-      {errMsg ? <Alert sx={{ m:1 }} severity='error'>{errMsg}</Alert> : <div/>}
-      {success ? <Alert sx={{ m:1 }} severity='success'>Added station!</Alert>: <div/>}
-      <StationForm addStation={handleStationAddition}/>
+    <Container maxWidth = 'sm' sx = {{ my: 5 }}>
+      { errMsg
+        ? <Alert sx = {{ m:1 }} severity = 'error'>{errMsg}</Alert>
+        : <div/> }
+      { success
+        ? <Alert sx = {{ m:1 }} severity = 'success'>Added station!</Alert>
+        : <div/> }
+      <StationForm addStation = { handleStationAddition }/>
     </Container>
   )
 }
 
-AddStationView.propTypes = {
+AddStationPage.propTypes = {
   url: propTypes.string
 }
-export default AddStationView
+
+export default AddStationPage

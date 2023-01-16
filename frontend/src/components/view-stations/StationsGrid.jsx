@@ -11,15 +11,15 @@ const columns = [
 
 const StationsGrid = ({ stations }) => {
   const navigate = useNavigate()
-  return <Box sx={{ height: 2711, width: '50%' }}>
+  return <Box sx = {{ height: 2711, width: '50%' }}>
     <DataGrid
-      rows={stations}
-      columns={columns}
-      pageSize={50}
-      rowsPerPageOptions={[50]}
+      rows = { stations }
+      columns = { columns }
+      pageSize = { 50 }
+      rowsPerPageOptions = { [50] }
       disableSelectionOnClick
-      onRowClick={ (params) => navigate('/stations/' + params.row.name) }
-      experimentalFeatures={{ newEditingApi: true }}
+      onRowClick = { (params) => navigate('/stations/' + params.row.name) }
+      experimentalFeatures = {{ newEditingApi: true }}
     />
   </Box>
 }

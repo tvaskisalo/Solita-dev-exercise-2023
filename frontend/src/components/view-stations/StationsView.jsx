@@ -9,9 +9,11 @@ const StationsView = ({ stations }) => {
   //Update the name (case insensitive) to filter stations.
   const update_filter = (event) => setName(event.target.value.toLowerCase())
   return <div>
-    <Box sx={{ display: 'flex', m: 5 }}>
-      <StationsGrid stations={stations.filter(station => station.name.toLowerCase().includes(name))} />
-      <TextField id='stationNameFilter' sx={{ mx: 5 }} label='Filter by name' type='search' onChange={(event) => update_filter(event)}/>
+    <Box sx = {{ display: 'flex', m: 5 }}>
+      <StationsGrid stations = { stations.filter(station => station.name.toLowerCase().includes(name)) } />
+      <TextField id = 'stationNameFilter' sx = {{ mx: 5 }}
+        label='Filter by name' type = 'search'
+        onChange = { (event) => update_filter(event) }/>
     </Box>
   </div>
 }

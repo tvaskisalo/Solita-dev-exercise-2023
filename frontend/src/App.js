@@ -13,12 +13,12 @@ function App() {
     <div>
       <Navigationbar />
       <Routes>
-        <Route path = '/' element = { <Navigate to='/trips' /> }/>
-        <Route path = '/stations' element = { <StationsPage url={ url +'/api/station' } /> }/>
+        <Route path = '/' element = { <Navigate to = '/trips' /> }/>
+        <Route path = '/stations' element = { <StationsPage url = { url +'/api/station' } /> }/>
         <Route path = '/stations/:name' element = { <SingleStationPage url = { url + '/api/station' } />}/>
-        <Route path = '/addTrip' element = { <AddTripPage url = { url + '/api/trip'}/> }/>
-        <Route path = '/addStation' element = { <AddStationPage url={ url +'/api/station' } /> }/>
-        <Route path = '/trips' element = { <TripsPage url={ url + '/api/trip'}/> }/>
+        <Route path = '/addTrip' element = { <AddTripPage url = { url + '/api/trip' }/> }/>
+        <Route path = '/addStation' element = { <AddStationPage url = { url +'/api/station' } /> }/>
+        <Route path = '/trips' element = { <TripsPage url = { url + '/api/trip' }/> }/>
       </Routes>
     </div>
   )

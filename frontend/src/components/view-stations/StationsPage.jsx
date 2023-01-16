@@ -18,7 +18,7 @@ const Stations = ({ url }) => {
       })
   }, [])
   if (errorMsg) {
-    return <Alert severity='error'>{errorMsg}</Alert>
+    return <Alert severity = 'error'>{ errorMsg }</Alert>
   }
   if (stations.length === 0) {
     return <div>Loading...</div>

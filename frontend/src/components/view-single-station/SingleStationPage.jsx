@@ -4,7 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import propTypes from 'prop-types'
 import stationService from '../../services/stationService'
 
-const SingleStation = ({ url }) => {
+const SingleStationPage = ({ url }) => {
   const [station, setStation] = useState('')
   const [err, setErr] = useState('')
   const name = useParams().name
@@ -27,11 +27,11 @@ const SingleStation = ({ url }) => {
   if (!station) {
     return <div>Loading</div>
   }
-  return <SingleStationView station={station}/>
+  return <SingleStationView station = { station }/>
 }
 
-SingleStation.propTypes = {
+SingleStationPage.propTypes = {
   url: propTypes.string
 }
 
-export default SingleStation
+export default SingleStationPage

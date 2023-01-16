@@ -15,14 +15,14 @@ const columns  = [
   { field: 'duration', headerName: 'Duration (min)', width: 180, type: 'number' },
 ]
 const TripsGrid = ({ trips }) => {
-  return <Box sx={{ height: 2711, width: '90%' }}>
+  return <Box sx = {{ height: 2711, width: '90%' }}>
     <DataGrid
-      rows={trips}
-      columns={columns}
-      pageSize={50}
-      rowsPerPageOptions={[50]}
+      rows = { trips }
+      columns = { columns }
+      pageSize = { 50 }
+      rowsPerPageOptions = { [50] }
       disableSelectionOnClick
-      experimentalFeatures={{ newEditingApi: true }}
+      experimentalFeatures = {{ newEditingApi: true }}
     />
   </Box>
 }
