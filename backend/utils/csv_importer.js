@@ -11,18 +11,19 @@ const import_csv = async (path) => {
   const files = fs.readdirSync(path)
   for (const file of files ){
     try {
-      const dataArray = await csvParser(path+'/'+file)
+      //csvParser will parse the entire file to a large daraArray that has the valid lines in the correct format.
+      const dataArray = await csvParser(path + '/' + file)
       for (const data of dataArray){
         try {
           let departure_station = await stationService.getStation(data.departure_station_name, data.departure_station_id)
+          //If the departure station did not exist create it, if it is valid.
           if (!departure_station) {
-            //No need for try-catch since errors are automatically sent to error-handler
             departure_station = await stationService.addStation(data.departure_station_name, data.departure_station_id)
           }
 
           let return_station = await stationService.getStation(data.return_station_name, data.return_station_id)
+          //If the return station did not exist create it, if it is valid.
           if (!return_station) {
-            //No need for try-catch since errors are automatically sent to error-handler
             return_station = await stationService.addStation(data.return_station_name, data.return_station_id)
           }
 

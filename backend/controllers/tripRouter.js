@@ -15,6 +15,7 @@ router.post('/', async(req, res) => {
   const return_station_id = body.return_station_id
   const distance = body.distance
   const duration = body.duration
+  //Validate given data
   if (
     !validateTime(departure_time) ||
     !validateTime(return_time) ||
@@ -30,14 +31,14 @@ router.post('/', async(req, res) => {
     throw e
   }
   let departure_station = await stationService.getStation(departure_station_name, departure_station_id)
+  //If the departure station did not exist create it, if it is valid.
   if (!departure_station) {
-    //No need for try-catch since errors are automatically sent to error-handler
     departure_station = await stationService.addStation(departure_station_name, departure_station_id)
   }
 
   let return_station = await stationService.getStation(return_station_name, return_station_id)
+  //If the return station did not exist create it, if it is valid.
   if (!return_station) {
-    //No need for try-catch since errors are automatically sent to error-handler
     return_station = await stationService.addStation(return_station_name, return_station_id)
   }
 
@@ -53,6 +54,7 @@ router.post('/', async(req, res) => {
 })
 
 router.get('/', async(req, res) => {
+  //Get all query params
   const departure_time = req.query.departure_time
   const return_time = req.query.return_time
   const departure_station_name = req.query.departure_station_name

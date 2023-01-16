@@ -41,7 +41,7 @@ const TripsView = ({ trips }) => {
     <div>
       <div>
         <TextField id = 'departureTimeFilter' sx = {{ mb: 2, mx: 2 }}
-          label='Filter departure time' type = 'search'
+          label = 'Filter departure time' type = 'search'
           onChange = { (event) => setDeparture_time(event.target.value) }/>
       </div>
       <div>

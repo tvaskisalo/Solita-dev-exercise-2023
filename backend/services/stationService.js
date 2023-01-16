@@ -83,10 +83,18 @@ const getStation = async(name, id) => {
   //Parse the statistics
   trips_starting = trips_starting ? trips_starting : undefined
   trips_ending = trips_ending ? trips_ending : undefined
-  avg_distance_ending = avg_distance_ending.length !== 0 ? avg_distance_ending[0].avg_distance_ending : undefined
-  avg_distance_starting = avg_distance_starting.length !== 0 ? avg_distance_starting[0].avg_distance_starting : undefined
-  avg_duration_ending = avg_duration_ending.length !== 0 ? avg_duration_ending[0].avg_duration_ending : undefined
-  avg_duration_starting = avg_duration_starting.length !== 0 ? avg_duration_starting[0].avg_duration_starting : undefined
+  avg_distance_ending = avg_distance_ending.length !== 0
+    ? avg_distance_ending[0].avg_distance_ending
+    : undefined
+  avg_distance_starting = avg_distance_starting.length !== 0
+    ? avg_distance_starting[0].avg_distance_starting
+    : undefined
+  avg_duration_ending = avg_duration_ending.length !== 0
+    ? avg_duration_ending[0].avg_duration_ending
+    : undefined
+  avg_duration_starting = avg_duration_starting.length !== 0
+    ? avg_duration_starting[0].avg_duration_starting
+    : undefined
   return {
     id: station.id,
     _id: station._id,

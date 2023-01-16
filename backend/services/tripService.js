@@ -50,22 +50,36 @@ const getTrips = async(
   duration
 ) => {
   let departure_station = undefined
+  //If valid, get the departure station
   if (validateStationName(departure_station_name)) {
     departure_station = await Station.findOne({ name: departure_station_name })
   }
   let return_station = undefined
+  //If valid, get the return station
   if (validateStationName(return_station_name)) {
     return_station = await Station.findOne({ name: return_station_name })
   }
   //Queries all for trips that fit given filters. If no value is given for parameter, it is a wildcard.
   //This works, since all fields must exist on all trips. There probably exists a better way.
   return await Trip.find({
-    departure_time: validateTime(departure_time) ? departure_time : { '$exists': true },
-    return_time: validateTime(return_time) ? return_time : { '$exists': true },
-    departure_station: departure_station ? departure_station._id : { '$exists': true },
-    return_station: return_station ? return_station._id : { '$exists': true },
-    distance: validateDistance(distance) ? Number(distance) : { '$exists': true },
-    duration: validateDuration(duration) ? Number(duration) : { '$exists': true }
+    departure_time: validateTime(departure_time)
+      ? departure_time
+      : { '$exists': true },
+    return_time: validateTime(return_time)
+      ? return_time
+      : { '$exists': true },
+    departure_station: departure_station
+      ? departure_station._id
+      : { '$exists': true },
+    return_station: return_station
+      ? return_station._id
+      : { '$exists': true },
+    distance: validateDistance(distance)
+      ? Number(distance)
+      : { '$exists': true },
+    duration: validateDuration(duration)
+      ? Number(duration)
+      : { '$exists': true }
   }).populate('departure_station').populate('return_station')
 }
 

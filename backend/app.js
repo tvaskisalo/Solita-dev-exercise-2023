@@ -39,6 +39,7 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
+//Enable test router only during testing mode.
 if (NODE_ENV === 'test') {
   const testRouter = require('./controllers/testRouter')
   app.use('/test', testRouter)
