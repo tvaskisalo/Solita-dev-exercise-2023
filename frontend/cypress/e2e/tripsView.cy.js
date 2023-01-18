@@ -20,8 +20,8 @@ describe('Trips view', () => {
     cy.contains('94')
     cy.contains('Teljäntie')
     cy.contains('100')
-    cy.contains('2.043')
-    cy.contains('8.333')
+    cy.contains('2.043' || '2,043')
+    cy.contains('8.333' || '8,333')
 
     cy.contains('2021-05-31T23:56:11')
     cy.contains('2021-06-01T00:02:02')
@@ -29,8 +29,8 @@ describe('Trips view', () => {
     cy.contains('4')
     cy.contains('Hernesaarenranta')
     cy.contains('65')
-    cy.contains('1.4')
-    cy.contains('5.833')
+    cy.contains('1.4' || '1,4')
+    cy.contains('5.833' || '5,833')
   })
 
   it('Departure time filter works', function() {
@@ -41,8 +41,8 @@ describe('Trips view', () => {
     cy.contains('94')
     cy.contains('Teljäntie')
     cy.contains('100')
-    cy.contains('2.043')
-    cy.contains('8.333')
+    cy.contains('2.043' || '2,043')
+    cy.contains('8.333' || '8,333')
     //I am making the assumption that if the other departure stations are not visible
     //Then no data relating to them is visible.
     cy.contains('Töölöntulli').should('not.exist')
@@ -64,8 +64,8 @@ describe('Trips view', () => {
     cy.contains('4')
     cy.contains('Hernesaarenranta')
     cy.contains('65')
-    cy.contains('4.318')
-    cy.contains('33.483')
+    cy.contains('4.318' || '4,318')
+    cy.contains('33.483' || '33,483')
     //I am making the assumption that if the other departure stations are not visible
     //Then no data relating to them is visible.
     cy.contains('Töölöntulli').should('not.exist')
@@ -87,8 +87,8 @@ describe('Trips view', () => {
     cy.contains('69')
     cy.contains('Välimerenkatu')
     cy.contains('62')
-    cy.contains('1.131')
-    cy.contains('5.6')
+    cy.contains('1.131' || '1,131')
+    cy.contains('5.6' || '5,6')
     //I am making the assumption that if the other departure stations are not visible
     //Then no data relating to them is visible.
     cy.contains('Töölöntulli').should('not.exist')
@@ -110,8 +110,8 @@ describe('Trips view', () => {
     cy.contains('240')
     cy.contains('Puotila (M)')
     cy.contains('281')
-    cy.contains('5.366')
-    cy.contains('21.733')
+    cy.contains('5.366' || '5,366')
+    cy.contains('21.733' || '21,733')
     //I am making the assumption that if the other departure stations are not visible
     //Then no data relating to them is visible.
     cy.contains('Töölöntulli').should('not.exist')
@@ -133,8 +133,8 @@ describe('Trips view', () => {
     cy.contains('240')
     cy.contains('Puotila (M)')
     cy.contains('281')
-    cy.contains('5.366')
-    cy.contains('21.733')
+    cy.contains('5.366' || '5,366')
+    cy.contains('21.733' || '21,733')
     //I am making the assumption that if the other departure stations are not visible
     //Then no data relating to them is visible.
     cy.contains('Töölöntulli').should('not.exist')
@@ -156,8 +156,8 @@ describe('Trips view', () => {
     cy.contains('123')
     cy.contains('Vilhonvuorenkatu')
     cy.contains('121')
-    cy.contains('1.025')
-    cy.contains('6.65')
+    cy.contains('1.025' || '1,025')
+    cy.contains('6.65' || '6,65')
     //I am making the assumption that if the other departure stations are not visible
     //Then no data relating to them is visible.
     cy.contains('Töölöntulli').should('not.exist')
@@ -177,8 +177,8 @@ describe('Trips view', () => {
     cy.contains('2021-06-01T00:40:20')
     cy.contains('Jämeräntaival')
     cy.contains('547')
-    cy.contains('1.227')
-    cy.contains('50.667')
+    cy.contains('1.227' || '1,227')
+    cy.contains('50.667' || '50,667')
     //I am making the assumption that if the other departure stations are not visible
     //Then no data relating to them is visible.
     cy.contains('Töölöntulli').should('not.exist')
@@ -200,8 +200,8 @@ describe('Trips view', () => {
     cy.contains('69')
     cy.contains('Välimerenkatu')
     cy.contains('62')
-    cy.contains('1.125')
-    cy.contains('5.6')
+    cy.contains('1.125' || '1,125')
+    cy.contains('5.6' || '5,6')
     //I am making the assumption that if the other departure stations are not visible
     //Then no data relating to them is visible.
     cy.contains('Töölöntulli').should('not.exist')
@@ -232,8 +232,8 @@ describe('Trips view', () => {
     cy.contains('147')
     cy.contains('Oulunkylän asema')
     cy.contains('232')
-    cy.contains('1.633')
-    cy.contains('11.2')
+    cy.contains('1.633' || '1,633')
+    cy.contains('11.2' || '11,2')
 
     //I am making the assumption that if the other departure stations are not visible
     //Then no data relating to them is visible.
