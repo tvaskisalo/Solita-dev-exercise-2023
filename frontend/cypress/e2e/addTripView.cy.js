@@ -60,8 +60,8 @@ describe('Valid trip addition', () => {
     cy.contains('94')
     cy.contains('Teljäntie')
     cy.contains('100')
-    cy.contains('2.043' || '2,043')
-    cy.contains('8.333' || '8,333')
+    cy.contains(/2.043|2,043/g)
+    cy.contains(/8.333|8,333/g)
   })
   it('After adding a trip, stations are correctly displayed', function() {
     cy.get('#DepartureTimeInput').type('2021-05-31T23:57:25')
