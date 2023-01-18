@@ -47,7 +47,7 @@ I wrote the entire project with Javascript and not Typescript to save on develop
 
 ## Running the project
 
-The project can be run on linux either manually or with docker-compose (see below) or on windows 10 with docker-compose. Running the project manually on windows 10 has not been confirmed. Please use docker-compose either way.
+The project can be run on linux either manually or with docker-compose (see below) or on windows 10 with docker-compose. Running the project manually on windows 10 has not been confirmed. Please use docker-compose either way. NOTE: I tried to run the project on ubuntu inside a virtual machine (Oracle VMBox) and the mongoDB container did not work due to certain CPU-features not being enabled.
 
 Requirements:
 - npm
