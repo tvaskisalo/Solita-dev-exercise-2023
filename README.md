@@ -69,8 +69,6 @@ in the root directory of the project. Please note that this will take a bit of t
 
 Docker-compose will start the production frontend at localhost:3000 and backend at localhost:3001
 
-NOTE: On windows 10, sometimes the backend does not wait for the mongodb container correctly. If the backend fails to connect to the mongodb, simply shut down the containers with CTRL + C and run the above command again.
-
 ### Manually with npm
 
 
@@ -132,8 +130,6 @@ docker-compose -f docker-compose.test.yml up --build
 at the project's root directory
 
 Note that after the tests docker-compose will start backend and frontend in testing-mode for cypress and thus will not exit automatically.
-
-NOTE: On windows 10, sometimes the backend does not wait for the mongodb container correctly. If the backend fails to connect to the mongodb, simply shut down the containers with CTRL + C and run the above command again.
 
 ### Manually
 

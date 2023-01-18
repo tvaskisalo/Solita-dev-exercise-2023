@@ -12,6 +12,11 @@ services:
       - 27017:27017
     volumes:
       - ./mongodb_test_data:/data/db
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
   backend_test:
     image: backend_test
     environment: 
@@ -24,7 +29,8 @@ services:
       - 3001:3001
     container_name: backend_test
     depends_on: 
-      - mongodb_test
+      mongodb_test:
+        condition: service_healthy
     # healthcheck is needed to check when backend is running properly
     healthcheck:
         test: ["CMD", "curl", "-f", "http://localhost:3001/ping"]
