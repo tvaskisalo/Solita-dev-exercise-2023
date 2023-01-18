@@ -200,7 +200,7 @@ describe('Trips view', () => {
     cy.contains('69')
     cy.contains('Välimerenkatu')
     cy.contains('62')
-    cy.contains(/g1.125|1,125/g)
+    cy.contains(/1.125|1,125/g)
     cy.contains(/5.6|5,6/g)
     //I am making the assumption that if the other departure stations are not visible
     //Then no data relating to them is visible.
